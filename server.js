@@ -7,7 +7,11 @@ const app = express();
 const PORT = 5000;
 const LIKES_FILE = path.join(__dirname, 'likes.json');
 
-app.use(cors());
+app.use(cors({
+  origin: ['https://group-project-op.vercel.app/', 'http://localhost:3000'],
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
 app.use(express.json());
 app.use('/imgs', express.static('public/imgs'));
 
@@ -220,4 +224,5 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Сервер запущено на http://localhost:${PORT}`);
+
 });
