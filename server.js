@@ -8,7 +8,7 @@ const PORT = 5000;
 const LIKES_FILE = path.join(__dirname, 'likes.json');
 
 app.use(cors({
-  origin: ['https://group-project-op.vercel.app/', 'http://localhost:3000'],
+  origin: ['https://group-project-op.vercel.app', 'http://localhost:3000'],
   methods: ['GET', 'POST'],
   credentials: true
 }));
@@ -226,4 +226,5 @@ app.listen(PORT, () => {
     console.log(`Сервер запущено на http://localhost:${PORT}`);
 
 });
+
 
