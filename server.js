@@ -7,13 +7,9 @@ const app = express();
 const PORT = 5000;
 const LIKES_FILE = path.join(__dirname, 'likes.json');
 
-app.use(cors({
-  origin: ['https://group-project-op.vercel.app', 'http://localhost:3000'],
-  methods: ['GET', 'POST'],
-  credentials: true
-}));
+app.use(cors());
 app.use(express.json());
-app.use('https://group-project-op-backend-1.onrender.com/imgs', express.static('publichttps://group-project-op-backend-1.onrender.com/imgs'));
+app.use('/imgs', express.static('public/imgs'));
 
 // --- ДОПОМІЖНІ ФУНКЦІЇ ДЛЯ РОБОТИ З ФАЙЛОМ ---
 
@@ -48,7 +44,7 @@ let cats = [
     city: "Київ",
     breed: "Британський короткошерстий",
     description: "Senior Full-Stack. Знаюся на фронтенді (твоє обличчя) і бекенді (твій холодильник). Пишу чистий код за паштет.",
-    image: "https://group-project-op-backend-1.onrender.com/imgs/full-kit-developer.jpg"
+    image: "/imgs/full-kit-developer.jpg"
   },
   {
     id: 2,
@@ -57,7 +53,7 @@ let cats = [
     city: "Львів",
     breed: "Європейська короткошерста",
     description: "Весь такий асинхронний. Люжу по ночах влаштовувати «тигидик» (це мій runtime). Чекаю на match, щоб замерджити серця.",
-    image: "https://group-project-op-backend-1.onrender.com/imgs/jsik.jpg"
+    image: "/imgs/jsik.jpg"
   },
   {
     id: 3,
@@ -66,7 +62,7 @@ let cats = [
     city: "Одеса",
     breed: "Британський довгошерстий",
     description: "Мій аптайм — 99.9%. Завжди на зв'язку, особливо коли на кухні відкривається консерва. Стійкий до навантажень.",
-    image: "https://group-project-op-backend-1.onrender.com/imgs/server.jpg"
+    image: "/imgs/server.jpg"
   },
   {
     id: 4,
@@ -75,7 +71,7 @@ let cats = [
     city: "Харків",
     breed: "Європейська короткошерста (Таббі)",
     description: "Працюю швидше за твій інтернет. Читання мурчання: 500 МБ/с. Запис любові: миттєво. Не туплю, не глючу.",
-    image: "https://group-project-op-backend-1.onrender.com/imgs/ssd.jpg"
+    image: "/imgs/ssd.jpg"
   },
   {
     id: 5,
@@ -84,7 +80,7 @@ let cats = [
     city: "Дніпро",
     breed: "Шотландська висловуха",
     description: "Стиль — моє друге ім'я. Ношу бантики та окуляри. Тільки серйозні стосунки та інтелектуальні бесіди про пташок.",
-    image: "https://group-project-op-backend-1.onrender.com/imgs/milka.jpg"
+    image: "/imgs/milka.jpg"
   },
   {
     id: 6,
@@ -93,7 +89,7 @@ let cats = [
     city: "Чернівці",
     breed: "Корніш-рекс",
     description: "Я — помилка в матриці, яка зробить життя веселішим. Трохи дивний, максимально ексклюзивний. Просто завантажую оновлення.",
-    image: "https://group-project-op-backend-1.onrender.com/imgs/glyk.jpg"
+    image: "/imgs/glyk.jpg"
   },
   {
     id: 7,
@@ -102,7 +98,7 @@ let cats = [
     city: "Полтава",
     breed: "Шотландська прямовуха",
     description: "Відповідаю за візуал. Можу зверстати затишок у будь-якій коробці. Давай налаштуємо наш padding обіймів.",
-    image: "https://group-project-op-backend-1.onrender.com/imgs/htmlka.jpg"
+    image: "/imgs/htmlka.jpg"
   },
   {
     id: 8,
@@ -111,7 +107,7 @@ let cats = [
     city: "Франкiвськ",
     breed: "Шотландська довгошерста",
     description: "Солодка, як десерт. Допомагаю друкувати на клавіатурі (лягаю прямо на неї). Оціни мій рожевий вайб.",
-    image: "https://group-project-op-backend-1.onrender.com/imgs/karamelka.jpg"
+    image: "/imgs/karamelka.jpg"
   },
   {
     id: 9,
@@ -120,7 +116,7 @@ let cats = [
     city: "Київ",
     breed: "Домашня короткошерста",
     description: "Бізнес-кіт. Завжди при краватці. Дедлайни по мурчанню не чекають. Справжній джентльмен для вечірнього Netflix.",
-    image: "https://group-project-op-backend-1.onrender.com/imgs/devmyr.jpg"
+    image: "/imgs/devmyr.jpg"
   },
   {
     id: 10,
@@ -129,7 +125,7 @@ let cats = [
     city: "Вінниця",
     breed: "Мейн-кун суміш",
     description: "Професійний сомелье снів. Мій язик завжди назовні, бо я надто розслаблений для цього світу. Шукаю напарника для сну.",
-    image: "https://group-project-op-backend-1.onrender.com/imgs/morsik.jpg"
+    image: "/imgs/morsik.jpg"
   },
   {
     id: 11,
@@ -138,7 +134,7 @@ let cats = [
     city: "Тернопіль",
     breed: "Шотландська короткошерста",
     description: "Дивлюся прямо в душу. Не вір цьому ангельському погляду — я вкраду твій сирок за 0.2 секунди. Але ти все одно полюбиш.",
-    image: "https://group-project-op-backend-1.onrender.com/imgs/snighka.jpg"
+    image: "/imgs/snighka.jpg"
   },
   {
     id: 12,
@@ -147,7 +143,7 @@ let cats = [
     city: "Запоріжжя",
     breed: "Домашня короткошерста",
     description: "Життя надто коротке, щоб бути серйозним. Люблю показувати язика обставинам. Веселий, непосидючий, щирий.",
-    image: "https://group-project-op-backend-1.onrender.com/imgs/kyzya.jpg"
+    image: "/imgs/kyzya.jpg"
   },
   {
     id: 13,
@@ -156,7 +152,7 @@ let cats = [
     city: "Житомир",
     breed: "Європейська короткошерста",
     description: "Я той самий клікбейт, повз який не пройдеш. Маленький, але з потенціалом захопити твій диван. 100% реальний.",
-    image: "https://group-project-op-backend-1.onrender.com/imgs/bait.jpg"
+    image: "/imgs/bait.jpg"
   },
   {
     id: 14,
@@ -165,7 +161,7 @@ let cats = [
     city: "Луцьк",
     breed: "Британська суміш",
     description: "Маленький скрипт для гарного настрою. Легко інтегруюся в будь-яку сім'ю. Досліджую нові директорії (твої шафи).",
-    image: "https://group-project-op-backend-1.onrender.com/imgs/kodik.jpg"
+    image: "/imgs/kodik.jpg"
   },
   {
     id: 15,
@@ -174,7 +170,7 @@ let cats = [
     city: "Київ",
     breed: "Екзотична короткошерста",
     description: "Трохи сумна зовні, але дуже тепла всередині. Шукаю того, хто зрозуміє мій глибокий внутрішній світ і дасть смаколик.",
-    image: "https://group-project-op-backend-1.onrender.com/imgs/tinka.jpg"
+    image: "/imgs/tinka.jpg"
   },
   {
     id: 16,
@@ -183,7 +179,7 @@ let cats = [
     city: "Одеса",
     breed: "Домашня короткошерста",
     description: "Маленька деталь твого щастя. Люблю ховатися так, що не знайти. Обіцяю бути найяскравішим пікселем твого дня.",
-    image: "https://group-project-op-backend-1.onrender.com/imgs/pixel.jpg"
+    image: "/imgs/pixel.jpg"
   }
 ];
 // --- API ---
@@ -224,7 +220,4 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Сервер запущено на http://localhost:${PORT}`);
-
 });
-
-
